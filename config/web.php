@@ -57,8 +57,9 @@ $config = [
             ],
         ],
         'apiClient' => [
-            'class' => 'app\components\ApiClient',
-            'host' => 'localhost:3000'
+            'class' => 'app\components\api\ApiClient',
+            'host' => 'http://localhost:3000',
+            'version' => 'v1'
         ]
     ],
     'params' => $params,

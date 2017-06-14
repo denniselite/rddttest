@@ -64,11 +64,7 @@ class SiteController extends Controller
     {
         $model = new TopicForm;
         if ($model->load(Yii::$app->request->post())) {
-
-            $topic = new Topic;
-            $topic->author = $model->author;
-            $topic->body = $model->body;
-
+            Yii::$app->apiClient->saveTopic($model);
             Yii::$app->session->setFlash('contactFormSubmitted');
             return $this->refresh();
         }
