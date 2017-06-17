@@ -5,7 +5,9 @@ namespace app\controllers;
 use app\components\repository\ArrayRepository;
 use app\models\Topic;
 use Yii;
+use yii\data\ArrayDataProvider;
 use yii\filters\AccessControl;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
@@ -60,8 +62,13 @@ class SiteController extends Controller
      * Displays topic page
      * @return string|Response
      */
-    public function actionTopic()
+    public function actionTopic($id = null, $vote = null)
     {
+        if (!is_null($id) && $vote) {
+            Yii::$app->apiClient->voteForTopic($id, ($vote === 'up'));
+            return $this->redirect(Url::to(['site/list']));
+        }
+
         $model = new TopicForm;
         if ($model->load(Yii::$app->request->post())) {
             Yii::$app->apiClient->saveTopic($model);
@@ -71,6 +78,21 @@ class SiteController extends Controller
 
         return $this->render('topic', [
             'model' => $model
+        ]);
+    }
+
+    /**
+     * Displays topic page
+     * @return string|Response
+     */
+    public function actionList()
+    {
+        /** @var []Topic $items */
+        $items = Yii::$app->apiClient->getTopics();
+        $dataProvider = new ArrayDataProvider;
+        $dataProvider->setModels($items);
+        return $this->render('list', [
+            'dataProvider' => $dataProvider
         ]);
     }
 }

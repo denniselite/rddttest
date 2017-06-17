@@ -44,7 +44,8 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '<action>' => '/site/<action>'
+                'topic/<id:\d+>/<vote:\w+>' => '/site/topic',
+                '<action>' => '/site/<action>',
             ],
         ],
         'i18n' => [

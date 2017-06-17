@@ -32,34 +32,33 @@ class Topic extends Model
      * Current rating of topic
      * @var int
      */
-    protected $_rating = 0;
+    public $rating = 0;
 
-    /**
-     * Current rating getter
-     * @return int
-     */
-    public function getRating()
+    public function setId($id)
     {
-        return $this->_rating;
+        $this->id = $id;
+        return $this;
     }
 
-    /**
-     * Vote up of topic
-     * @return $this
-     */
-    public function setVoteUp()
+    public function setAuthor($author)
     {
-        $this->_rating++;
+        $this->author = $author;
         return $this;
     }
 
     /**
-     * Vote down of topic ration
-     * @return $this
+     * @param $body
+     * @return Topic
      */
-    public function setVoteDown()
+    public function setBody($body)
     {
-        $this->_rating++;
+        $this->body = $body;
+        return $this;
+    }
+
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
         return $this;
     }
 }
