@@ -8,9 +8,9 @@ $this->title = Yii::t('main', 'The rddt application');
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Welcome!</h1>
+        <h1><?=Yii::t('main', 'Welcome');?></h1>
 
-        <p class="lead">You are able to check the rddt test application.</p>
+        <p class="lead"><?=Yii::t('main', 'You are able to check the rddt test application.');?></p>
 
         <p><a class="btn btn-lg btn-success" href="<?=Url::to('/site/topic');?>"><?=Yii::t('main', 'Create your topic');?></a></p>
     </div>
@@ -23,7 +23,7 @@ $this->title = Yii::t('main', 'The rddt application');
 
                 <p><?=Yii::t('main', 'Here you can see all topics and vote for them');?></p>
 
-                <p><a class="btn btn-default" href="<?=Url::to('/site/list')?>"><?=Yii::t('main', 'Topics list');?> &raquo;</a></p>
+                <p><a class="btn btn-default" href="<?=Url::to(['/site/list'])?>"><?=Yii::t('main', 'Topics list');?> &raquo;</a></p>
             </div>
         </div>
 

@@ -35,7 +35,7 @@ class TopicForm extends Topic
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            'verifyCode' => \Yii::t('main', 'Verification Code'),
         ];
     }
 }
